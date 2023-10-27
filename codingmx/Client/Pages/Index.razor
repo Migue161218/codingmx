@@ -1,0 +1,609 @@
+﻿@page "/"
+@inject HttpClient http
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding"Código e Ingeniería"</title>
+    <link rel="icon" type="image/jpg" href="/assets/logo/Logocoding.png" />
+    <link rel="stylesheet" type="text/css" href="/css/estilos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://kit.fontawesome.com/cf27b99e70.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+</head>
+
+<body>
+    <section Model="NuevoCliente" class="contenedorimg">
+        <div class="backgroundimg">
+            <div class="logo">
+                <img class="logo" src="/assets/img/logo.png" />
+            </div>
+            <img class="imgblack" src="/assets/background/img_Background.png" />
+            <div class="parrafotitulo">
+                <p class="part1titulo"> La solución integral para tus <span class="part2titulo">necesidades</span>.</p>
+            </div>
+            <div class="form-floating mb-3 formulario">
+                <div class="parrafo">
+                    <p class="parte1"> Digitaliza tú negocio <span class="parte2">ahora</span>. </p>
+                </div>
+                <div class="form-floating input_name">
+                    <input @bind-value=NuevoCliente.ClienteNombre type="text" style="border-color: #d09ae3; border-width: 2px" class="form-control" id="floatingInput" placeholder="Nombre" />
+                    <label class="tamañolabel" for="floatingInput">Nombre</label>
+                </div>
+                <div class="form-floating input_negocio">
+                    <input @bind-value=NuevoCliente.ClienteEmpresa type="text" style="border-color: #d09ae3; border-width: 2px" class="form-control" id="floatingInput" placeholder="Nombre de tu Negocio" />
+                    <label class="tamañolabel" for="floatingInput">Nombre de tu Negocio</label>
+                </div>
+                <div class="form-floating input_email">
+                    <input @bind-value=NuevoCliente.ClienteEmail type="email" style="border-color: #d09ae3; border-width: 2px" class="form-control" id="floatingEmail" placeholder="Email" />
+                    <label class="tamañolabel" for="floatingEmail">Email</label>
+                </div>
+                <div class="form-floating input_whatsapp">
+                    <input @bind-value=NuevoCliente.ClienteTelefono type="number"  style="border-color: #d09ae3; border-width: 2px" class="form-control" id="floatingNumber" placeholder="WhatsApp" />
+                    <label class="tamañolabel" for="floatingNumber">WhatsApp</label>
+                </div>
+                <div class="boton-formu">
+                    <button @onclick="(()=>RegistroCliente(NuevoCliente))" type="button" style="background: #d09ae3; border-radius: 50px" class="btn boton_formu" >
+                        <a class="nombrebtn" href="api/cliente">Recibir información</a>
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="información">
+        <div class="text-inf">
+            <p class="info"> Diseñamos y desarrollamos tú web a tu<span class="infocolor"> medida</span>. </p>
+        </div>
+        <div class="infogrid">
+
+            <div class="slider">
+                <!--data-bs-ride="carousel"-->
+                <div id="carouselExampleDark" class="carousel carousel-dark slide">
+                    <div id="carouselExampleIndicators" class="carousel slide">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        </div>
+
+
+                        <div class="carousel-inner carruselinf">
+                            <!--SLIDER 1-->
+                            <div class="carousel-item active">
+                                <div class="circulo">
+                                    <svg class="imgcirculo1" xmlns="http://www.w3.org/2000/svg" width="94" height="91" viewBox="0 0 94 91" fill="none">
+                                        <ellipse class="circulo" cx="47" cy="45.5" rx="47" ry="45.5" fill="#D09AE3" />
+                                    </svg>
+                                    <img class="Analisis" src="./assets/img/Analisis.png" />
+                                </div>
+                                <div class="tituloslider1">
+                                    <p class="titulo1">Análisis</p>
+                                </div>
+                                <div class="textslider1">
+                                    <p class="textsub1"> Evaluamos en profundidad tu campo para proponer múltiples ideas que potencien tu proyecto.</p>
+                                </div>
+                                <svg class="imgslider1" xmlns="http://www.w3.org/2000/svg" width="509" height="327" viewBox="0 0 509 327" fill="none">
+                                    <g filter="url(#filter0_d_181_2)">
+                                        <path d="M119.119 25C119.119 11.1929 130.312 0 144.119 0H479.388C493.358 0 504.617 11.448 504.385 25.4159L499.909 294.416C499.682 308.059 488.557 319 474.913 319H29C15.1929 319 4 307.807 4 294V122.436C4 108.629 15.1929 97.4364 29 97.4364H94.1191C107.926 97.4364 119.119 86.2435 119.119 72.4364V25Z" fill="#D09AE3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_181_2" x="0" y="0" width="508.389" height="327" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset dy="4" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_181_2" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_181_2" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                            <!-- FIN DEL SLIDER 1-->
+                            <!--SLIDER 2-->
+                            <div class="carousel-item">
+                                <div class="circulo">
+                                    <svg class="imgcirculo2" xmlns="http://www.w3.org/2000/svg" width="94" height="91" viewBox="0 0 94 91" fill="none">
+                                        <ellipse class="circulo" cx="47" cy="45.5" rx="47" ry="45.5" fill="#D09AE3" />
+                                    </svg>
+                                    <img class="Propuestas" src="./assets/img/propuestas.png" />
+                                </div>
+                                <div class="tituloslider2">
+                                    <p class="titulo2">Propuestas</p>
+                                </div>
+                                <div class="textslider2">
+                                    <p class="textsub2"> A partir de nuestro análisis, creamos recomendaciones para que puedas elegir las mejores opciones con confianza.</p>
+                                </div>
+                                <svg class="imgslider2" xmlns="http://www.w3.org/2000/svg" width="509" height="327" viewBox="0 0 509 327" fill="none">
+                                    <g filter="url(#filter0_d_181_2)">
+                                        <path class="sliderimg" Expand Down d="M119.119 25C119.119 11.1929 130.312 0 144.119 0H479.388C493.358 0 504.617 11.448 504.385 25.4159L499.909 294.416C499.682 308.059 488.557 319 474.913 319H29C15.1929 319 4 307.807 4 294V122.436C4 108.629 15.1929 97.4364 29 97.4364H94.1191C107.926 97.4364 119.119 86.2435 119.119 72.4364V25Z" fill="#D09AE3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_181_2" x="0" y="0" width="508.389" height="327" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset dy="4" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_181_2" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_181_2" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <!--FIN DEL SLIDER 2-->
+                            <!--SLIDER 3-->
+                            <div class="carousel-item">
+                                <div class="circulo">
+                                    <svg class="imgcirculo3" xmlns="http://www.w3.org/2000/svg" width="94" height="91" viewBox="0 0 94 91" fill="none">
+                                        <ellipse class="circulo" cx="47" cy="45.5" rx="47" ry="45.5" fill="#D09AE3" />
+                                    </svg>
+                                    <img class="Diseños" src="./assets/img/diseñoux.png" />
+                                </div>
+                                <div class="tituloslider3">
+                                    <p class="titulo3">Diseños</p>
+                                </div>
+                                <div class="textslider3">
+                                    <p class="textsub3"> Materializamos la propuesta seleccionada, asegurando una experiencia excepcional para tus usuarios. </p>
+                                </div>
+                                <svg class="imgslider3" xmlns="http://www.w3.org/2000/svg" width="509" height="327" viewBox="0 0 509 327" fill="none">
+                                    <g filter="url(#filter0_d_181_2)">
+                                        <path d="M119.119 25C119.119 11.1929 130.312 0 144.119 0H479.388C493.358 0 504.617 11.448 504.385 25.4159L499.909 294.416C499.682 308.059 488.557 319 474.913 319H29C15.1929 319 4 307.807 4 294V122.436C4 108.629 15.1929 97.4364 29 97.4364H94.1191C107.926 97.4364 119.119 86.2435 119.119 72.4364V25Z" fill="#D09AE3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_181_2" x="0" y="0" width="508.389" height="327" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset dy="4" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_181_2" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_181_2" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <!--FIN SLIDER 3 -->
+                            <!--SLIDER 4-->
+                            <div class="carousel-item">
+                                <div class="circulo">
+                                    <svg class="imgcirculo4" xmlns="http://www.w3.org/2000/svg" width="94" height="91" viewBox="0 0 94 91" fill="none">
+                                        <ellipse class="circulo" cx="47" cy="45.5" rx="47" ry="45.5" fill="#D09AE3" />
+                                    </svg>
+                                    <img class="Desarrollo" src="./assets/img/desarroloslider.png" />
+                                </div>
+                                <div class="tituloslider4">
+                                    <p class="titulo4">Desarrollo</p>
+                                </div>
+                                <div class="textslider4">
+                                    <p class="textsub4">Programamos con precisión, verificando cada función y realizando pruebas en diversos dispositivos.</p>
+                                </div>
+                                <svg class="imgslider4" xmlns="http://www.w3.org/2000/svg" width="509" height="327" viewBox="0 0 509 327" fill="none">
+                                    <g filter="url(#filter0_d_181_2)">
+                                        <path d="M119.119 25C119.119 11.1929 130.312 0 144.119 0H479.388C493.358 0 504.617 11.448 504.385 25.4159L499.909 294.416C499.682 308.059 488.557 319 474.913 319H29C15.1929 319 4 307.807 4 294V122.436C4 108.629 15.1929 97.4364 29 97.4364H94.1191C107.926 97.4364 119.119 86.2435 119.119 72.4364V25Z" fill="#D09AE3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_181_2" x="0" y="0" width="508.389" height="327" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                            <feOffset dy="4" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_181_2" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_181_2" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <!--FIN SLIDER 4 -->
+                            <!-- SLIDER 5 -->
+                            <div class="carousel-item">
+                                <div class="circulo">
+                                    <svg class="imgcirculo5" xmlns="http://www.w3.org/2000/svg" width="94" height="91" viewBox="0 0 94 91" fill="none">
+                                        <ellipse class="circulo" cx="47" cy="45.5" rx="47" ry="45.5" fill="#D09AE3" />
+                                    </svg>
+                                    <img class="Integracion" src="./assets/img/integracion.png" />
+                                </div>
+                                <div class="tituloslider5">
+                                    <p class="titulo5">Integración</p>
+                                </div>
+                                <div class="textslider5">
+                                    <p class="textsub5"> Incorporamos tu desarrollo en tus estrategias digitales para llevar tu proyecto al siguiente nivel. </p>
+                                </div>
+                                <svg class="imgslider5" xmlns="http://www.w3.org/2000/svg" width="509" height="327" viewBox="0 0 509 327" fill="none">
+                                    <g filter="url(#filter0_d_181_2)">
+                                        <path d="M119.119 25C119.119 11.1929 130.312 0 144.119 0H479.388C493.358 0 504.617 11.448 504.385 25.4159L499.909 294.416C499.682 308.059 488.557 319 474.913 319H29C15.1929 319 4 307.807 4 294V122.436C4 108.629 15.1929 97.4364 29 97.4364H94.1191C107.926 97.4364 119.119 86.2435 119.119 72.4364V25Z" fill="#D09AE3" />
+                                    </g>
+                                    <defs>
+                                        <filter id="filter0_d_181_2" x="0" y="0" width="508.389" height="327" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                            <feOffset dy="4" />
+                                            <feGaussianBlur stdDeviation="2" />
+                                            <feComposite in2="hardAlpha" operator="out" />
+                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_181_2" />
+                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_181_2" result="shape" />
+                                        </filter>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <!--FIN SLIDER 5 -->
+                        </div>
+                        <!--
+                        <button  class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button  class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                        -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="imginfor">
+                <div class="contenedorteni">
+                    <div data-aos="fade-right" data-aos-duration="2800">
+                        <img class="teni" src="/assets/img/tenipubli.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="especialidades">
+        <div class="titulo_especialidad">
+            <p class="titulo_esp">Especialidades Principales.</p>
+        </div>
+        <div class="subtitulo_especialidad">
+            <span class="sub_espe">Para satisfacer tus necesidades</span>
+        </div>
+        <div class="tarjetas_especialidad">
+            <div class="tarjetas">
+                <div class="img_text">
+                    <img class="imgdesarrollo" src="/assets/img/desarrollo.png" />
+                    <div class="textodesarrollo">
+                        <p class="texto-desa">Desarrollo WEB</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tarjetas">
+                <div class="img_text">
+                    <img class="imgdiseño" src="/assets/img/diseño.png" />
+                    <div class="textodiseño">
+                        <p class="texto-dis">Diseño UX/UI</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tarjetas">
+                <div class="img_text">
+                    <img class="imghacking" src="/assets/img/Growth Hacking.png" />
+                    <div class="textohacking">
+                        <p class="texto-hack">Growth Hacking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tarjetas_especialidad2">
+            <div class="tarjetas2">
+                <div class="img_text2">
+                    <img class="imgseo" src="/assets/img/SEO.png" />
+                    <div class="textoseo">
+                        <p class="texto-seo">SEO</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tarjetas2">
+                <div class="img_text2">
+                    <img class="imgmarketing" src="/assets/img/Marketing Digital.png" />
+                    <div class="textomarketing">
+                        <p class="texto-marke">Marketing Digital</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="carrusel_especialidades">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <!--
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+                -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="tarjetas">
+                            <div class="img_text">
+                                <img class="imgdesarrollo" src="/assets/img/desarrollo.png" />
+                                <div class="textodesarrollo">
+                                    <p class="texto-desa">Desarrollo WEB</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="tarjetas">
+                            <div class="img_text">
+                                <img class="imgdiseño" src="/assets/img/diseño.png" />
+                                <div class="textodiseño">
+                                    <p class="texto-dis">Diseño UX/UI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="tarjetas">
+                            <div class="img_text">
+                                <img class="imghacking" src="/assets/img/Growth Hacking.png" />
+                                <div class="textohacking">
+                                    <p class="texto-hack">Growth Hacking</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="tarjetas">
+                            <div class="img_text">
+                                <img class="imgseo" src="/assets/img/SEO.png" />
+                                <div class="textoseo">
+                                    <p class="texto-seo">SEO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="tarjetas">
+                            <div class="img_text">
+                                <img class="imgmarketing" src="/assets/img/Marketing Digital.png" />
+                                <div class="textomarketing">
+                                    <p class="texto-marke">Marketing Digital</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                -->
+            </div>
+        </div>
+
+    </section>
+    <section class="optimizarpag">
+        <div class="contenedor_Optimizar">
+            <div class="optimizar_secsion">
+                <div class="optimizar_section" data-aos="fade-up" data-aos-duration="2800">
+                    <img class="img_compu" src="/assets/img/compu.png" />
+                </div>
+            </div>
+            <div class="inf_optimizar">
+                <div class="titulo_optimizar">
+                    <p class="pregunta_opti">
+                        ¿Ya cuentas con una WEB y quieres optimizarlo?
+                    </p>
+                    <div class="subtitulo_opti">
+                        <span class="text_opti">Dejanos tús datos para una propuesta.</span>
+                    </div>
+                </div>
+                <div class="form-floating mb-3 formulario_optimizar">
+                    <div class="form-floating input_name2">
+                        <input type="text" style="border-color: #d09ae3; border-width: 2px" class="form-control nombre2" id="floatingInput" placeholder="Nombre" />
+                        <label class="tamañolabel2" for="floatingInput">Nombre</label>
+                    </div>
+                    <div class="form-floating input_email2">
+                        <input type="email"
+                               style="border-color: #d09ae3; border-width: 2px"
+                               class="form-control email2"
+                               id="floatingEmail"
+                               placeholder="Email" />
+                        <label class="tamañolabel2" for="floatingEmail">Email</label>
+                    </div>
+                    <div class="form-floating input_whatsapp2">
+                        <input type="number"
+                               style="border-color: #d09ae3; border-width: 2px"
+                               class="form-control WhatsApp_2"
+                               id="floatingNumber"
+                               placeholder="WhatsApp" />
+                        <label class="tamañolabel2" for="floatingNumber">WhatsApp</label>
+                    </div>
+                    <div class="form-floating input_link">
+                        <input type="text"
+                               style="border-color: #d09ae3; border-width: 2px"
+                               class="form-control link"
+                               id="floatingInput"
+                               placeholder="Link de tú sitio WEB" />
+                        <label class="tamañolabel2" for="floatingInput">Link de tú sitio WEB</label>
+                    </div>
+                    <div class="boton-formu_opti">
+                        <button type="button"
+                                style="background: #d09ae3; border-radius: 50px"
+                                class="btn boton_formu_opti">
+                            <span class="btn-optimizar">Optimizar ahora.</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="tecnologias">
+        <div class="titulo_tec">
+            <p class="tit_tec">Algunas de las tecnologias qué manejamos</p>
+            <div class="subtitulo_tec">
+                <p class="sub_tec">Profesionalmente para ti.</p>
+            </div>
+        </div>
+        <div class="imagenesTecno">
+            <div class="imgTecno">
+                <div class="img_php">
+                    <img class="imgphp" src="/assets/img/PHP.png" />
+                </div>
+            </div>
+            <div class="imgTecno">
+                <div class="img_wordpress">
+                    <img class="imgwordpress" src="/assets/img/Wordpress.png" />
+                </div>
+            </div>
+            <div class="imgTecno">
+                <div class="img_html">
+                    <img class="imghtml" src="/assets/img/html5.png" />
+                </div>
+            </div>
+            <div class="imgTecno">
+                <div class="img_css">
+                    <img class="imgcss" src="/assets/img/CSS3.png" />
+                </div>
+            </div>
+            <div class="imgTecno">
+                <div class="img_js">
+                    <img class="imgjs" src="/assets/img/JavaScript.png" />
+                </div>
+            </div>
+            <div class="imgTecno">
+                <div class="img_shopify">
+                    <img class="imgshopify" src="/assets/img/shopify.png" />
+                </div>
+            </div>
+            <div class="imgTecno">
+                <div class="img_Genexus">
+                    <img class="imgGenexus" src="/assets/img/Genexus.png" />
+                </div>
+            </div>
+        </div>
+        <div class="imagenesTecno2">
+            <div class="imgTecno2">
+                <div class="img_sql">
+                    <img class="imgsql" src="/assets/img/sql.png" />
+                </div>
+            </div>
+            <div class="imgTecno2">
+                <div class="img_AngJs">
+                    <img class="imgAngJs" src="/assets/img/Angularjs.png" />
+                </div>
+            </div>
+            <div class="imgTecno2">
+                <div class="img_azure">
+                    <img class="imgazure" src="/assets/img/azure.png" />
+                </div>
+            </div>
+            <div class="imgTecno2">
+                <div class="img_NET">
+                    <img class="imgNET" src="/assets/img/NET MAUI.png" />
+                </div>
+            </div>
+            <div class="imgTecno2">
+                <div class="img_mailchimp">
+                    <img class="imgmailchimp" src="/assets/img/mailchimp.png" />
+                </div>
+            </div>
+        </div>
+        <div class="carrusel_imgtecnologias">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/assets/img/PHP.png" class="d-block w-40 imgphp" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/Wordpress.png" class="d-block w-40 imgwordpress" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/html5.png" class="d-block w-40 imghtml" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/CSS3.png" class="d-block w-40 imgcss" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/JavaScript.png" class="d-block w-40 imgjs" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/shopify.png" class="d-block w-40 imgshopify" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/Genexus.png" class="d-block w-40 imgGenexus" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/sql.png" class="d-block w-40 imgsql" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/Angularjs.png" class="d-block w-40 imgAngJs" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/azure.png" class="d-block w-40 imgazure" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/NET MAUI.png" class="d-block w-40 imgNET" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/img/mailchimp.png" class="d-block w-40 imgmailchimp" alt="...">
+                    </div>
+                </div>
+                <!--
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+                -->
+            </div>
+
+        </div>
+    </section>
+    <footer class="piedepagina d-flex flex-wrap justify-content-between align-items-center">
+        <div class="namepie">
+            <p class="text_piedepag">Powered by coding©</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
+
+
+
+
+@code{
+    Cliente NuevoCliente = new Cliente();
+
+    public async Task RegistroCliente (Cliente clientecoding)
+    {
+        var resultado = await http.PostAsJsonAsync("api/Cliente", clientecoding);
+    }
+
+}
